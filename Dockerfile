@@ -3,7 +3,7 @@ LABEL "author"="tanghuailong"
 #ENV http_proxy="http://web-proxy.atl.hp.com:8080" \
 #    https_proxy="http://web-proxy.atl.hp.com:8080"
 
-RUN apk add --update nginx && apk add --update apache2-utils && rm -rf /var/cache/apk/*
+RUN apk add --update nginx && apk add --update apache2-utils && apk add --update curl  && rm -rf /var/cache/apk/*
 RUN mkdir -p /tmp/nginx/client-body && mkdir -p /nginxconfig/
 
 COPY nginx.conf /etc/nginx/nginx.conf 
