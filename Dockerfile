@@ -1,7 +1,7 @@
 FROM alpine:3.2
 LABEL "author"="tanghuailong"
-ENV http_proxy="http://web-proxy.atl.hp.com:8080" \
-    https_proxy="http://web-proxy.atl.hp.com:8080"
+#ENV http_proxy="http://web-proxy.atl.hp.com:8080" \
+#    https_proxy="http://web-proxy.atl.hp.com:8080"
 
 RUN apk add --update nginx && apk add --update apache2-utils && rm -rf /var/cache/apk/*
 RUN mkdir -p /tmp/nginx/client-body && mkdir -p /nginxconfig/
