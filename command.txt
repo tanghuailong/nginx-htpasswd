@@ -1,0 +1,2 @@
+docker build -t nginx:beta
+docker run -d  -p 8082:80 -v /root/nginxconfig:/nginxconfig --name auth nginx:beta
