@@ -2,8 +2,8 @@ FROM opensuse:42.2
 
 LABEL "author"="tanghuailong"
 
-ENV http_proxy="http://web-proxy.atl.hp.com:8080" \
-    https_proxy="http://web-proxy.atl.hp.com:8080"
+#ENV http_proxy="http://web-proxy.atl.hp.com:8080" \
+#    https_proxy="http://web-proxy.atl.hp.com:8080"
 
 RUN zypper --non-interactive in --recommends  nginx apache-utils curl wget && \
     zypper clean
