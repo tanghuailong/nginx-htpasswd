@@ -1,16 +1,16 @@
-FROM alpine:3.2
+FROM opensuse:42.2
+
 LABEL "author"="tanghuailong"
-#ENV http_proxy="http://web-proxy.atl.hp.com:8080" \
-#    https_proxy="http://web-proxy.atl.hp.com:8080"
 
-RUN apk add --update nginx && apk add --update apache2-utils && apk add --update curl  && rm -rf /var/cache/apk/*
-RUN mkdir -p /tmp/nginx/client-body && mkdir -p /nginxconfig/
+ENV http_proxy="http://web-proxy.atl.hp.com:8080" \
+    https_proxy="http://web-proxy.atl.hp.com:8080"
 
-COPY nginx.conf /etc/nginx/nginx.conf 
-COPY website /usr/share/nginx/html 
-COPY copyfile.sh /
+RUN zypper --non-interactive in --recommends  nginx apache-utils curl wget; \
+    zypper clean;
+RUN mkdir -p /tmp/nginx/client-body && mkdir -p /htpassword/
 
-RUN chmod 777 /copyfile.sh
+COPY nginx/nginx.conf /etc/nginx/nginx.conf 
+COPY app /usr/share/nginx/html 
 
-CMD ["/copyfile.sh"]
+
 CMD ["nginx", "-g", "daemon off;"]
